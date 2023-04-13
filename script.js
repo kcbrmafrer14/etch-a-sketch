@@ -36,11 +36,18 @@ rainbow.addEventListener('click', () => {
         rainbow.classList.add('pressed-button');
         randomize();
         rainbowMode = true;
+        eraser.classList.remove('pressed-button');
     }
 });
 
 function erase() {
-    if (currentColor === 'white') {
+    if (rainbowMode) {
+        rainbowMode = false;
+        currentColor = 'white';
+        eraser.classList.add('pressed-button');
+        rainbow.classList.remove('pressed-button');
+    }
+    else if (currentColor === 'white') {
         currentColor = color.value;
         eraser.classList.remove('pressed-button');
     }
