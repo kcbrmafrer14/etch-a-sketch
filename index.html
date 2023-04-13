@@ -6,30 +6,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Etch-A-Sketch</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="./images/favicon.png">
     
 </head>
 <body>
     <h1>Etch-A-Sketch</h1>
-    <div>
-        <div class="sizeSelector"></div>
-        <input class="gridSize" type="range" max=10 min=1 value=3 />
-    </div>
+
 
     <div class="main">
         <div class="settings">
-            <div>
-                <div>What color?</div>
+            <div class="picker">
+                <div>Color Picker</div>
                 <div><input type="color" class="color-picker"></div>
             </div>
+            <div class="spacer"></div>
+            <div class="rainbow">Rainbow</div>
             <div class="eraser">Eraser</div>
             <div class="clear">Clear</div>
+            <div>
+                <div class="sizeSelector" style="font-weight: bold;"></div>
+                <input class="gridSize" type="range" max=64 min=1 value=16 />
+            </div>
+            <div class="spacer"></div>
+            <div class="inside-borders">
+                <p>Inside Borders</p>
+                <input class="check" type="checkbox" checked value="true">
+            </div>
         </div>
 
         <div class="container">
         </div>
     </div>
 
-    <footer>Copyright</footer>
+    <footer>
+        Copyright © <span id="year"></span> <a href="https://github.com/kcbrmafrer14">kcbrmafrer14</a> 
+    </footer>
     <script src="script.js"></script>
 </body>
 </html>

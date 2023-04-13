@@ -3,6 +3,8 @@ let size = document.querySelector('.gridSize');
 let gridSize = size.value;
 setUpGrid(gridSize);
 
+let gridItem = document.querySelectorAll('.grid-item');
+
 // for dragging purposes
 let mouse = 0;
 document.body.onmousedown = () => mouse = 1;
@@ -14,12 +16,30 @@ color.addEventListener('change', changeColor);
 let currentColor = color.value;
 
 function changeColor() {
-    currentColor = color.value;
+    if (rainbowMode) {
+        rainbowMode = false
+        rainbow.classList.remove('pressed-button')
+        currentColor = color.value;
+    }  
 }
 
 // for eraser
+let rainbowMode = false;
 const eraser = document.querySelector('.eraser');
 eraser.addEventListener('click', erase);
+const rainbow = document.querySelector('.rainbow');
+rainbow.addEventListener('click', () => {
+    if (rainbowMode) {
+        rainbow.classList.remove('pressed-button');
+        currentColor = 'black';
+        rainbowMode = false;
+    }
+    else {
+        rainbow.classList.add('pressed-button');
+        randomize();
+        rainbowMode = true;
+    }
+});
 
 function erase() {
     if (currentColor === 'white') {
@@ -29,7 +49,35 @@ function erase() {
     else {
         currentColor = 'white';
         eraser.classList.add('pressed-button');
+        rainbow.classList.remove('pressed-button');
     }}
+// for rainbow 
+function randomize() {
+    if (rainbowMode) {
+        const randomR = Math.floor(Math.random() * 256);
+        const randomG = Math.floor(Math.random() * 256);
+        const randomB = Math.floor(Math.random() * 256);
+        
+        let random = `rgb(${randomR}, ${randomG}, ${randomB})`;
+        currentColor = random;
+    }
+}
+// for inside borders
+const insideBorder = document.querySelector('.check');
+
+let checkBorder = insideBorder.value;
+insideBorder.addEventListener('change', () => {
+    if (checkBorder) {
+        checkBorder = false;
+        gridItem.forEach(div => div.style.border = 'none');
+    }
+    else {
+        checkBorder = true;
+        gridItem.forEach(div => div.style.border = '#f0f0f0 solid 0.5px');
+    }
+    
+})
+
 
 // getting value of grid
 
@@ -59,9 +107,12 @@ function setUpGrid(value) {
 
         container.insertAdjacentElement('beforeend', newDiv);
 
-        newDiv.addEventListener('click', () => newDiv.style.backgroundColor = currentColor);
+        newDiv.addEventListener('click', () =>
+         newDiv.style.backgroundColor = currentColor);
+
         newDiv.addEventListener('mouseover', () => {
             if (mouse === 1) {
+                randomize();
                 newDiv.style.backgroundColor = currentColor;
             }
         })
@@ -80,10 +131,14 @@ const clear = document.querySelector('.clear')
 clear.addEventListener('click', clearAll);
 
 function clearAll() {
-    let gridItem = document.querySelectorAll('.grid-item');
     gridItem.forEach(div => div.style.backgroundColor = 'white');
     makeGrid(gridSize);
     clear.classList.add('pressed-button');
-    setTimeout(() => clear.classList.remove('pressed-button'), 100);
+    setTimeout(() => clear.classList.remove('pressed-button'), 200);
 }
 
+
+
+// for footer
+const footer = document.querySelector('#year');
+footer.textContent = new Date().getFullYear();
