@@ -29,7 +29,7 @@ const rainbow = document.querySelector('.rainbow');
 rainbow.addEventListener('click', () => {
     if (rainbowMode) {
         rainbow.classList.remove('pressed-button');
-        currentColor = 'black';
+        currentColor = color.value;
         rainbowMode = false;
     }
     else {
