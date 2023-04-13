@@ -1,0 +1,21 @@
+* {
+    border: 1px solid black;
+    text-align: center;
+}
+.main {
+    background-color: blanchedalmond;
+    padding: 100px;
+    display: flex;
+    gap: 100px;
+}
+
+.container {
+    height: 100px;
+    width: 100px;
+    display: grid;
+}
+
+.pressed-button {
+    background-color: black;
+    color: white;
+}
