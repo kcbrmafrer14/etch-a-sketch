@@ -71,11 +71,20 @@ body {
     font-weight: bold;
 }
 
-
-.eraser, .rainbow .clear, .color-picker, {
-    transition: transform 0.2s ease-in-out;
+.eraser, 
+#checker,
+.rainbow, 
+.clear, 
+.color-picker,
+.gridSize {
+    transition: transform .1s ease-in-out;
 }
-.eraser:hover,.ranbow:hover .clear:hover, .color-picker:hover {
+.eraser:hover,
+#checker:hover,
+.rainbow:hover, 
+.clear:hover, 
+.color-picker:hover,
+.gridSize:hover {
     transform: scale(1.15);
 }
 
@@ -160,7 +169,7 @@ input[type="checkbox"]:checked::after {
 }
 
 .spacer {
-    background-color: #363636;
+    background-color: #3b0948;
     height: 2px;
     width: 150px;
     margin: -15px 20px;
@@ -176,7 +185,7 @@ input[type="checkbox"]:checked::after {
     height: 660px;
     width: 660px;
     display: grid;
-    border: 2px solid black;
+    border: 2px solid #3b0948;
 }
 
 .grid-item {
