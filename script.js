@@ -3,8 +3,6 @@ let size = document.querySelector('.gridSize');
 let gridSize = size.value;
 setUpGrid(gridSize);
 
-let gridItem = document.querySelectorAll('.grid-item');
-
 // for dragging purposes
 let mouse = 0;
 document.body.onmousedown = () => mouse = 1;
@@ -67,6 +65,8 @@ const insideBorder = document.querySelector('.check');
 
 let checkBorder = insideBorder.value;
 insideBorder.addEventListener('change', () => {
+    let gridItem = document.querySelectorAll('.grid-item');
+
     if (checkBorder) {
         checkBorder = false;
         gridItem.forEach(div => div.style.border = 'none');
@@ -131,6 +131,7 @@ const clear = document.querySelector('.clear')
 clear.addEventListener('click', clearAll);
 
 function clearAll() {
+    let gridItem = document.querySelectorAll('.grid-item');
     gridItem.forEach(div => div.style.backgroundColor = 'white');
     makeGrid(gridSize);
     clear.classList.add('pressed-button');
